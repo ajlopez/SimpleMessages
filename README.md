@@ -1,4 +1,4 @@
 # SimpleMessages
 
-Simple bidirectional JSON messages using net sockets.
+Simple bidirectional JSON message channels using net sockets.
 

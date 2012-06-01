@@ -1,5 +1,5 @@
 { "name": "simplemessages"
-, "description": "Simple bidirectional JSON messages using net sockets"
+, "description": "Simple bidirectional JSON message channels using net sockets"
 , "keywords": [ "message passing", "JSON", "socket", "nodejs", "javascript" ]
 , "version": "0.0.1-alfa"
 , "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
