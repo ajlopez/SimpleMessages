@@ -53,8 +53,8 @@ client.on('connect', function() {
 ## Development
 
 ```
-git clone git://github.com/ajlopez/SimpeMessages.git
-cd SimpeMessages
+git clone git://github.com/ajlopez/SimpleMessages.git
+cd SimpleMessages
 npm install
 npm test
 ```
@@ -65,8 +65,8 @@ TBD
 
 ## Contribution
 
-Feel free to [file issues](https://github.com/ajlopez/SimpeMessages) and submit
-[pull requests](https://github.com/ajlopez/SimpeMessages/pulls) — contributions are
+Feel free to [file issues](https://github.com/ajlopez/SimpleMessages) and submit
+[pull requests](https://github.com/ajlopez/SimpleMessages/pulls) — contributions are
 welcome.
 
 If you submit a pull request, please be sure to add or update corresponding
