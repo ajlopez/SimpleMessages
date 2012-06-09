@@ -39,7 +39,7 @@ server.write(msg);
 Client side
 
 ```js
-var client = simplemessages.createClient(8000, remotehost);
+var client = simplemessages.createClient();
 
 client.on('connect', function() {
 	client.write({ name: "my message" });
@@ -48,6 +48,9 @@ client.on('connect', function() {
 	// when done, close the client channel
 	client.end();
 });
+
+client.connect(8000, remotehost);
+
 ```
 
 ## Development
