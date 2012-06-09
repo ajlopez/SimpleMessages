@@ -14,14 +14,16 @@ exports['Connect to Server and Write Message'] = function(test) {
 		});
 	});
 	
-	server.listen(4000, 'localhost');
+	server.listen(5000, 'localhost');
 	
-	var client = simplemessages.createClient(4000, 'localhost');
+	var client = simplemessages.createClient();
 
     client.on('connect', function() {
         client.write({ name: "test" });
         client.end();
     });
+    
+    client.connect(5000, 'localhost');
 }
 
 exports['Connect to Server and Write Ten Messages'] = function(test) {
@@ -43,9 +45,9 @@ exports['Connect to Server and Write Ten Messages'] = function(test) {
 		});
 	});
 	
-	server.listen(4001, 'localhost');
+	server.listen(5000, 'localhost');
 	
-	var client = simplemessages.createClient(4001, 'localhost');
+	var client = simplemessages.createClient();
 	
     client.on('connect', function() {
         for (var k = 1; k <= 10; k++)
@@ -53,6 +55,8 @@ exports['Connect to Server and Write Ten Messages'] = function(test) {
             
         client.end();
     });
+    
+    client.connect(5000, 'localhost');
 }
 
 exports['Connect to Server and Receive Message'] = function(test) {
@@ -63,9 +67,9 @@ exports['Connect to Server and Receive Message'] = function(test) {
         channel.write({ name: "test"});
 	});
 	
-	server.listen(4000, 'localhost');
+	server.listen(5000, 'localhost');
 	
-	var client = simplemessages.createClient(4000, 'localhost');
+	var client = simplemessages.createClient();
     
     client.on('message', function(msg) {
         test.ok(msg);
@@ -74,6 +78,8 @@ exports['Connect to Server and Receive Message'] = function(test) {
         client.end();
         server.close();
     });
+    
+    client.connect(5000, 'localhost');
 }
 
 exports['Connect to Server and Receive Ten Messages'] = function(test) {
@@ -85,9 +91,9 @@ exports['Connect to Server and Receive Ten Messages'] = function(test) {
             channel.write({ name: "test", number: k });
 	});
 	
-	server.listen(4000, 'localhost');
+	server.listen(5000, 'localhost');
 	
-	var client = simplemessages.createClient(4000, 'localhost');
+	var client = simplemessages.createClient();
     var nmsg = 0;
     
     client.on('message', function(msg) {
@@ -102,4 +108,6 @@ exports['Connect to Server and Receive Ten Messages'] = function(test) {
             server.close();
         }
     });
+    
+    client.connect(5000, 'localhost');
 }
