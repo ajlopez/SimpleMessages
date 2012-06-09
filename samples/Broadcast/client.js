@@ -1,24 +1,17 @@
 
-var simplemessages = require('../../');
-
-var message = "Hello, world";
-var port = 3000;
-var host = "localhost";
-var sleep = 1000;
-
-if (process.argv.length > 2)
-	port = parseInt(process.argv[2]);
-	
-if (process.argv.length > 3)
-	host = process.argv[3];
-	
-if (process.argv.length > 4)
-	message = process.argv[4];
-
-if (process.argv.length > 5)
-	sleep = parseInt(process.argv[5]);
+var simplemessages = require('../../'),
+    sargs = require('simpleargs');
     
-var client = simplemessages.createClient(port, host);
+// Define command line arguments
+sargs.define('p', 'port', 3000, 'Server port')
+    .define('h', 'host', 'localhost', 'Server name')
+    .define('t', 'timeout', 1000, 'Timeout')
+    .defineValue('message', 'Hello, world', 'Message to send');
+    
+// Process arguments
+var options = sargs.process(process.argv);
+    
+var client = simplemessages.createClient(options.port, options.host);
 
 client.on('connect', function() {
     run(client);
@@ -29,9 +22,9 @@ client.on('message', function(msg) {
 });
 
 function run(client) {
-    var msg = (new Date()).toString() + ": " + message;
+    var msg = (new Date()).toString() + ": " + options.message;
     console.log(msg);
-    client.write((new Date()).toString() + ": " + message);
-    setTimeout(function() { run(client); }, sleep);
+    client.write(msg);
+    setTimeout(function() { run(client); }, options.timeout);
 }
 
