@@ -26,7 +26,7 @@ client.connect(options.port, options.host);
 function run(client) {
     var msg = (new Date()).toString() + ": " + options.message;
     console.log(msg);
-    client.write(msg);
+    client.send(msg);
     setTimeout(function() { run(client); }, options.timeout);
 }
 

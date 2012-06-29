@@ -19,7 +19,7 @@ exports['Connect to Server and Write Message'] = function(test) {
     var client = simplemessages.createClient();
 
     client.on('connect', function() {
-        client.write({ name: "test" });
+        client.send({ name: "test" });
         client.end();
     });
     
@@ -51,7 +51,7 @@ exports['Connect to Server and Write Ten Messages'] = function(test) {
     
     client.on('connect', function() {
         for (var k = 1; k <= 10; k++)
-            client.write({ name: "test", number: k });
+            client.send({ name: "test", number: k });
             
         client.end();
     });
@@ -64,7 +64,7 @@ exports['Connect to Server and Receive Message'] = function(test) {
     
     var server = simplemessages.createServer(function(channel) {
         test.ok(channel);
-        channel.write({ name: "test"});
+        channel.send({ name: "test"});
     });
     
     server.listen(5000, 'localhost');
@@ -88,7 +88,7 @@ exports['Connect to Server and Receive Ten Messages'] = function(test) {
     var server = simplemessages.createServer(function(channel) {
         test.ok(channel);
         for (var k = 1; k <= 10; k++)
-            channel.write({ name: "test", number: k });
+            channel.send({ name: "test", number: k });
     });
     
     server.listen(5000, 'localhost');

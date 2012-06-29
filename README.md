@@ -33,7 +33,7 @@ server.listen(8000);
 Sending a message (any Javascript value that can be processed by JSON.stringify
 
 ```js
-server.write(msg);
+server.send(msg);
 ```
 
 Client side
@@ -42,8 +42,8 @@ Client side
 var client = simplemessages.createClient();
 
 client.on('connect', function() {
-	client.write({ name: "my message" });
-	// use client.write(msg) to send a message to the server
+	client.send({ name: "my message" });
+	// use client.send(msg) to send a message to the server
 	
 	// when done, close the client channel
 	client.end();
