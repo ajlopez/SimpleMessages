@@ -29,7 +29,7 @@ function Broadcaster()
 			if (client == source)
 				continue;
 			try {
-				client.write(msg);
+				client.send(msg);
 			}
 			catch (ex) {
 				console.log(ex.toString());
