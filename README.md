@@ -64,7 +64,13 @@ npm test
 
 ## Samples
 
-TBD
+- [Broadcast](https://github.com/ajlopez/SimpleMessages/tree/master/samples/Broadcast) Broadcast messages to all connected client.
+
+## Versions
+
+- 0.0.1: Published
+- 0.0.2: Published
+- 0.0.3: In master, under development. Refactored to use ObjectStream.
 
 ## Contribution
 

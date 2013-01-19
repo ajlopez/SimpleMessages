@@ -1,7 +1,7 @@
 { "name": "simplemessages"
-, "description": "Simple bidirectional JSON message channels using net sockets"
+, "description": "Simple bidirectional JSON message channels using net sockets as object streams"
 , "keywords": [ "message passing", "JSON", "socket", "nodejs", "javascript" ]
-, "version": "0.0.1"
+, "version": "0.0.3"
 , "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
 , "repository": { "type": "git", "url": "git://github.com/ajlopez/SimpleMessages.git" }
 , "main": "./lib/simplemessages.js"
@@ -10,9 +10,9 @@
     "test": "nodeunit test"
   }
 , "dependencies": {
+    "objectstream": "0.0.1"
   }
 , "devDependencies": {
-	"simpleargs": "*",
     "nodeunit": ">= 0.7.4"
   }
 }
