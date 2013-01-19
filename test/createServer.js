@@ -5,8 +5,8 @@ var simplemessages = require('../'),
 exports['Create Server and Write Message'] = function(test) {
     test.expect(2);
     
-    var server = simplemessages.createServer(function(channel) {
-        channel.on('message', function(msg) {
+    var server = simplemessages.createServer(function(client) {
+        client.on('data', function(msg) {
             test.ok(msg);
             test.equal(msg.name, 'test');
             test.done();
@@ -27,8 +27,8 @@ exports['Create Server and Write Ten Messages'] = function(test) {
     
     var nmsg = 0;
     
-    var server = simplemessages.createServer(function(channel) {
-        channel.on('message', function(msg) {
+    var server = simplemessages.createServer(function(client) {
+        client.on('data', function(msg) {
             test.ok(msg);
             test.equal(msg.name, 'test');
             nmsg++;

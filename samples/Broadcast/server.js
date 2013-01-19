@@ -12,7 +12,7 @@ function Broadcaster()
         console.log("New Client");
 		client.nclient = nclients++;
 		clients[client.nclient] = client;
-		client.on('message', function(msg) { broadcaster.broadcast(client, msg); });
+		client.on('data', function(msg) { broadcaster.broadcast(client, msg); });
 		client.on('end', function() { broadcaster.removeClient(client); });
 		client.on('close', function() { broadcaster.removeClient(client); });
 	}
@@ -29,7 +29,7 @@ function Broadcaster()
 			if (client == source)
 				continue;
 			try {
-				client.send(msg);
+				client.write(msg);
 			}
 			catch (ex) {
 				console.log(ex.toString());
