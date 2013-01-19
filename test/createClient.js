@@ -25,6 +25,26 @@ exports['Connect to Server and Write Message'] = function(test) {
     });
 }
 
+exports['Connect to Server using port and host and callback'] = function(test) {
+    test.expect(2);
+    
+    var server = simplemessages.createServer(function(client) {
+        client.on('data', function(msg) {
+            test.ok(msg);
+            test.equal(msg.name, 'test');
+            test.done();
+            server.close();
+        });
+    });
+    
+    server.listen(5000, 'localhost');
+    
+    var client = simplemessages.createClient(5000, 'localhost', function() {
+        client.write({ name: "test" });
+        client.end();
+    });
+}
+
 exports['Connect to Server and Write Ten Messages'] = function(test) {
     test.expect(30);
     

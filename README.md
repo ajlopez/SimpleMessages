@@ -33,23 +33,34 @@ server.listen(8000);
 Sending a message (any Javascript value that can be processed by JSON.stringify
 
 ```js
-server.send(msg);
+server.write(msg);
 ```
 
-Client side
+Client side, you specify port, host and, optionally, a callback on connect event:
 
 ```js
-var client = simplemessages.createClient();
+var client = simplemessages.createClient(port, host, function() {
+    // code to run at connect event
+	client.write({ name: "my message" });
+	// use client.write(msg) to send a message to the server	
+	// when done, close the client channel
+	client.end();
+});
+```
 
-client.on('connect', function() {
-	client.send({ name: "my message" });
-	// use client.send(msg) to send a message to the server
+Alternatively, you can use a socket, and listen on it for connect event.
+```js
+var socket = net.connect(port, host);
+var client = simplemessages.createClient(socket);
+
+// Launch on socket connect
+socket.on('connect', function() {
+	client.write({ name: "my message" });
+	// use client.write(msg) to send a message to the server
 	
 	// when done, close the client channel
 	client.end();
 });
-
-client.connect(8000, remotehost);
 
 ```
 
@@ -70,7 +81,7 @@ npm test
 
 - 0.0.1: Published
 - 0.0.2: Published
-- 0.0.3: In master, under development. Refactored to use ObjectStream.
+- 0.0.3: Published. Refactored to use ObjectStream.
 
 ## Contribution
 

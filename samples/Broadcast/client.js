@@ -12,12 +12,7 @@ sargs.define('p', 'port', 3000, 'Server port')
 // Process arguments
 var options = sargs.process(process.argv);
 
-var socket = net.connect(options.port, options.host);
-var client = simplemessages.createClient(socket);
-
-socket.on('connect', function() {
-    run(client);
-});
+var client = simplemessages.createClient(options.port, options.host, function () { run(client); });
 
 client.on('data', function(msg) {
     console.log(msg);
