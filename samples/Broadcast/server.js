@@ -13,13 +13,16 @@ function Broadcaster()
 		client.nclient = nclients++;
 		clients[client.nclient] = client;
 		client.on('data', function(msg) { broadcaster.broadcast(client, msg); });
+		client.on('error', function() { broadcaster.removeClient(client); });
 		client.on('end', function() { broadcaster.removeClient(client); });
 		client.on('close', function() { broadcaster.removeClient(client); });
 	}
 	
 	this.removeClient = function(client) {
-        console.log("Remove Client");
-		delete clients[client.nclient];
+		if (clients[client.nclient]) {
+			console.log("Remove Client");
+			delete clients[client.nclient];
+		}
 	}
 	
 	this.broadcast = function(source, msg) {
