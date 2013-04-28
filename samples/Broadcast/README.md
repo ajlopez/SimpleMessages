@@ -38,8 +38,3 @@ node client -p 3000 -h localhost hi
 node client --timeout 2000 hi
 ```
 
-
-
-(Thanks to [JSON5](https://github.com/aseemk/json5) by [aseemk](https://github.com/aseemk). 
-This file is based on that project README.md).
-
