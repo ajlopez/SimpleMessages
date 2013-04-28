@@ -17,6 +17,8 @@ var client = simplemessages.createClient(options.port, options.host, function ()
 client.on('data', function(msg) {
     console.log(msg);
 });
+client.on('error', disconnect);
+client.on('close', disconnect);
 
 function run(client) {
     var msg = (new Date()).toString() + ": " + options.message;
@@ -25,3 +27,7 @@ function run(client) {
     setTimeout(function() { run(client); }, options.timeout);
 }
 
+function disconnect() {
+    console.log('End Program');
+    process.exit(0);
+}
