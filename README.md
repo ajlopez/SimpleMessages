@@ -84,6 +84,7 @@ npm test
 - 0.0.3: Published. Refactored to use ObjectStream
 - 0.0.4: Published. It uses ObjectStream 0.0.2
 - 0.0.5: Published. Engine range updated. It uses ObjectStream 0.0.3
+- 0.0.6: Published. Using ObjectStream 0.0.4
 
 ## Contribution
 
