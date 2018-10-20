@@ -1,18 +1,30 @@
-{ "name": "simplemessages"
-, "description": "Simple bidirectional JSON message channels using net sockets as object streams"
-, "keywords": [ "message passing", "JSON", "socket", "nodejs", "javascript" ]
-, "version": "0.0.6"
-, "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
-, "repository": { "type": "git", "url": "git://github.com/ajlopez/SimpleMessages.git" }
-, "main": "./lib/simplemessages.js"
-, "engines": { "node": ">= 0.6.0 && < 0.11.0" }
-, "scripts": {
-    "test": "nodeunit test"
-  }
-, "dependencies": {
-    "objectstream": "0.0.4"
-  }
-, "devDependencies": {
-    "nodeunit": ">= 0.7.4"
-  }
+{
+    "name": "simplemessages",
+    "description": "Simple bidirectional JSON message channels using net sockets as object streams",
+    "keywords": [
+        "message passing",
+        "JSON",
+        "socket",
+        "nodejs",
+        "javascript"
+    ],
+    "version": "0.0.6",
+    "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ajlopez/SimpleMessages.git"
+    },
+    "main": "./lib/simplemessages.js",
+    "engines": {
+        "node": ">= 6.6.0"
+    },
+    "scripts": {
+        "test": "simpleunit -r ./test"
+    },
+    "dependencies": {
+        "objectstream": "0.0.5"
+    },
+    "devDependencies": {
+        "simpleunit": "0.0.7"
+    }
 }
