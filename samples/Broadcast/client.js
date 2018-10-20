@@ -6,11 +6,10 @@ var simplemessages = require('../../'),
 // Define command line arguments
 sargs.define('p', 'port', 3000, 'Server port')
     .define('h', 'host', 'localhost', 'Server name')
-    .define('t', 'timeout', 1000, 'Timeout')
-    .defineValue('message', 'Hello world', 'Message to send');
+    .define('t', 'timeout', 1000, 'Timeout');
     
 // Process arguments
-var options = sargs.process(process.argv);
+var options = sargs(process.argv);
 
 var client = simplemessages.createClient(options.port, options.host, function () { run(client); });
 
@@ -21,7 +20,7 @@ client.on('error', disconnect);
 client.on('close', disconnect);
 
 function run(client) {
-    var msg = (new Date()).toString() + ": " + options.message;
+    var msg = (new Date()).toString() + ": " + options._;
     console.log(msg);
     client.write(msg);
     setTimeout(function() { run(client); }, options.timeout);

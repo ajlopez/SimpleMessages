@@ -1,6 +1,6 @@
 
-var simplemessages = require('../../'),
-    sargs = require('simpleargs');
+var simplemessages = require('../../');
+var sargs = require('simpleargs');
    
 function Broadcaster()
 {
@@ -46,7 +46,7 @@ var broadcaster = new Broadcaster();
 var server = simplemessages.createServer(function(client) { broadcaster.newClient(client); });
 
 sargs.define('p', 'port', 3000, 'Port to listen');
-var options = sargs.process(process.argv);
+var options = sargs(process.argv);
     
 server.listen(options.port);
 console.log("Listening on port", options.port);
